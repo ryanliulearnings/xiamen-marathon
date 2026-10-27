@@ -42,6 +42,8 @@ header{display:grid;gap:14px}
 .facts b{color:var(--ink);font-weight:700}
 .status{background:var(--accent-soft);color:var(--ink);border-radius:10px;padding:12px 16px;font-size:14px}
 .status b{color:var(--accent)}
+.updated{font-size:13px;color:var(--muted)}
+.updated b{color:var(--ink);font-weight:600}
 section{display:grid;gap:14px}
 .sub{color:var(--muted);font-size:14px;max-width:70ch}
 
@@ -122,6 +124,7 @@ footer{color:var(--muted);font-size:12px}
       <span>乳酸阈心率 <b class="mono">174</b></span>
     </div>
     <div class="status" id="status">课表从 10月19日（周一）开始。</div>
+    <div class="updated">最近更新：<b id="upd-top" class="mono"></b></div>
   </header>
 
   <section>
@@ -173,7 +176,7 @@ footer{color:var(--muted);font-size:12px}
 </div>
 
 <script>
-const UPDATED = "2026-10-27";
+const UPDATED = "2026-10-27 20:35";
 const START = "2026-10-19";
 // type: E M T I R S(rest/strength) X(race)
 const WEEKS = [
@@ -341,6 +344,7 @@ if(!LOG.length) lg.innerHTML=`<div class="empty">第 1 周结束后（10月26日
 else lg.innerHTML=`<table><thead><tr><th>周</th><th>计划 / 实际</th><th>关键课</th><th>恢复指标</th><th>调整</th></tr></thead><tbody>${
   LOG.map(r=>`<tr><td class="mono">W${r.week}</td><td class="mono">${r.plan} / ${r.actual}km</td><td>${r.key}</td><td>${r.recovery}</td><td>${r.change}</td></tr>`).join("")}</tbody></table>`;
 document.getElementById("upd").textContent=UPDATED;
+document.getElementById("upd-top").textContent=UPDATED;
 </script>
 
 </body>
